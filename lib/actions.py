@@ -5,23 +5,27 @@ Copyright (c) 2016 tilt (https://github.com/AeonDave/doork)
 See the file 'LICENSE' for copying permission
 """
 
-import sys, os, core, settings
+import sys
+import os
+from . import core
+from . import settings
 
 from lib.logger import logger
 
 __version__ = settings.VERSION
 __author__ = settings.AUTHOR
 
+
 def header():
     os.system("clear")
 
-    print ""
-    print "         =============================================== "
-    print "        |  Doork v{0}\t\t\t\t|".format(__version__)
-    print "        |  by {0}\t\t\t\t\t|".format(__author__)
-    print "         =============================================== "
-    print ""
-    print """
+    print("")
+    print("         =============================================== ")
+    print(("        |  Doork v{0}\t\t\t\t|".format(__version__)))
+    print(("        |  by {0}\t\t\t\t\t|".format(__author__)))
+    print("         =============================================== ")
+    print("")
+    print("""
     
     
                                 .+MNa+...
@@ -59,10 +63,11 @@ def header():
                                ,MNMMNMNMMNMH9"^ 
                                 .THH9"^ 
     
-    """
+    """)
+
 
 def showhelp():
-    print """
+    print("""
     Usage: python doork.py [Target] [Options] [Output]
 
     Target:
@@ -78,7 +83,8 @@ def showhelp():
     Examples:
         python doork.py -t google.com -o log.log
         python doork.py -u
-    """
+    """)
+
 
 def scan(target):
 
@@ -91,13 +97,13 @@ def scan(target):
         logger.info(msg)
         try:
             core.scan(target, settings.WORDLISTFILE)
-        except Exception,e: 
-            print str(e)
+        except Exception as e: 
+            print((str(e)))
             msg = "[-] ERROR"
             logger.error(msg)
 
     else:
-        msg =  "[-] ERROR: You must provide a valid target. Given: "+ target
+        msg = "[-] ERROR: You must provide a valid target. Given: "+ target
         showhelp()
         logger.error(msg)
         sys.exit(1)
@@ -119,7 +125,7 @@ def scan_wordlist(target, wordlist):
             logger.error(msg)
 
     else:
-        msg =  "[-] ERROR: You must provide a valid target. Given: "+ target
+        msg = "[-] ERROR: You must provide a valid target. Given: "+ target
         showhelp()
         logger.error(msg)
         sys.exit(1)

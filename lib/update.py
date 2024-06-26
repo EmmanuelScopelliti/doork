@@ -5,7 +5,12 @@ Copyright (c) 2016 tilt (https://github.com/AeonDave/doork)
 See the file 'LICENSE' for copying permission
 """
 
-import sys, os, settings, source, codecs
+import sys
+import os
+# import settings
+from . import source
+import codecs
+
 from lib.logger import logger
 from subprocess import PIPE
 from subprocess import Popen

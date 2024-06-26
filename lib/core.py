@@ -44,16 +44,16 @@ def scan(url, wordlist):
             time.sleep(rnd)
             g = GoogleSearch("site:"+url+" "+dork, random_agent=True)
             g.results_per_page = 10
-            print("."),
+            print(("."), end=' ')
             results = g.get_results()
             if len(results) > 0:
                 msg = "[+] Found "+ results +" results with dork: "+dork
                 logger.info(msg)
                 for res in results:
-                    print res.title.encode('utf8')
-                    print res.url.encode("utf8")
-        except SearchError, e:
-            print "Search failed: %s" % e
+                    print(res.title.encode('utf8'))
+                    print(res.url.encode("utf8"))
+        except SearchError as e:
+            print("Search failed: %s" % e)
     msg = "[+] Scan finished"
     logger.info(msg)
     
